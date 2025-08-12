@@ -33,5 +33,10 @@ quiz_topics = {
             "options": ["Sans", "Papyrus", "Mettaton", "Asgore"],
             "answer": "Papyrus"
         },
+        {
+            "question": "What is the name of the first human to have fallen?",
+            "options": ["Frisk", "Chara", "Asriel", "Clover"],
+            "answer": "Chara"
+        }
     ]
 }
