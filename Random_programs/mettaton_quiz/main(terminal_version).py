@@ -20,7 +20,7 @@ quiz_topics = {
             "question": "What is the Philosopher's Stone made of?",
             "options": ["Human souls", "Gold", "rock", "Alchemical energy"],
             "answer": "Human souls"
-        }
+        },
     ],
     "Undertale": [
         {
