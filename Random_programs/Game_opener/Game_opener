@@ -1,0 +1,12 @@
+import webbrowser
+import keyboard
+
+
+# Open a new tab with a specific URL
+PSOutertale= "https://gamejolt.net/?token=P3RSYhpXggV8Tg4G2XQiaNx2ovufMZ"
+Underfell_OneHellOfAShow = ""
+
+if keyboard.is_pressed('p'):  # If the 'p' key is pressed
+    webbrowser.open_new_tab(PSOutertale)
+elif keyboard.is_pressed('f'):
+    webbrowser.open_new_tab(Underfell_OneHellOfAShow)
