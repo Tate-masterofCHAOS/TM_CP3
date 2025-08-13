@@ -2,6 +2,7 @@ import pygame
 import csv
 import random
 import time
+import os
 
 def pystart(): # 
         pygame.init()
@@ -48,7 +49,7 @@ def main():
     pygame.init()
     screen = pystart()
     screen.fill(BLACK)
-    screen.blit(pygame.image.load("mettaton_battle_box.webp"), (0, 0))
+    screen.blit(pygame.image.load("logo.png"), (0, 0))
     while True:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
