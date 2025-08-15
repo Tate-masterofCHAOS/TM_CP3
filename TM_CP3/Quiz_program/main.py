@@ -15,7 +15,7 @@ RED = (255, 0, 0)
 
 def load_questions(topic):
     questions = []
-    with open('TM_CP3/Quiz_program/Questions.csv', 'r') as file:
+    with open('Programming-3\TM_CP3\Quiz_program\Questions.csv', 'r') as file:
         reader = csv.DictReader(file)
         for row in reader:
             if topic == 'All' or row['topic'] == topic:
@@ -51,12 +51,16 @@ def main():
     clear(screen)
     display("Press any key to start...", 2, screen)
     clear(screen)
-    display("Choose a topic:", 2, screen)
-    display("1. Full Metal Alchemist", 2, screen, x=500, y=100)
-    display("2. Harry Potter", 2, screen, x=500, y=150)
-    display("3. All", 2, screen, x=500, y=200)
+    display("Choose a topic:", 0, screen)
+    display("1. Full Metal Alchemist", 0, screen, x=500, y=100)
+    display("2. Harry Potter", 0, screen, x=500, y=150)
+    display("3. Undertale", 0, screen, x=500, y=200)
+    display("4. Deltarune", 0, screen, x=500, y=250)
+    display("3. All", 0, screen, x=500, y=300)
     soulY = 100
-    screen.blit(pygame.image.load('Programming-3\TM_CP3\Quiz_program\download (1).png'), (450, soulY))
+    soul = pygame.image.load('Programming-3\TM_CP3\Quiz_program\soul.png')
+    soul = pygame.transform.scale(soul,(30,30))
+    screen.blit(soul, (450, soulY))
     pygame.display.flip()
     
     waiting_for_selection = True
@@ -66,14 +70,16 @@ def main():
                 pygame.quit()
                 return
             elif event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_DOWN and soulY < 200:  # Prevent moving out of bounds
+                if event.key == pygame.K_DOWN and soulY < 300:  # Prevent moving out of bounds
                     soulY += 50
                     clear(screen)
                     display("Choose a topic:", 0, screen)
                     display("1. Full Metal Alchemist", 0, screen, x=500, y=100)
                     display("2. Harry Potter", 0, screen, x=500, y=150)
-                    display("3. All", 0, screen, x=500, y=200)
-                    screen.blit(pygame.image.load('Programming-3\TM_CP3\Quiz_program\download (1).png'), (450, soulY))
+                    display("3. Undertale", 0, screen, x=500, y=200)
+                    display("4. Deltarune", 0, screen, x=500, y=250)
+                    display("3. All", 0, screen, x=500, y=300)
+                    screen.blit(soul, (450, soulY))
                     pygame.display.flip()
                 elif event.key == pygame.K_UP and soulY > 100:  # Prevent moving out of bounds
                     soulY -= 50
@@ -81,8 +87,10 @@ def main():
                     display("Choose a topic:", 0, screen)
                     display("1. Full Metal Alchemist", 0, screen, x=500, y=100)
                     display("2. Harry Potter", 0, screen, x=500, y=150)
-                    display("3. All", 0, screen, x=500, y=200)
-                    screen.blit(pygame.image.load('Programming-3\TM_CP3\Quiz_program\download (1).png'), (450, soulY))
+                    display("3. Undertale", 0, screen, x=500, y=200)
+                    display("4. Deltarune", 0, screen, x=500, y=250)
+                    display("3. All", 0, screen, x=500, y=300)
+                    screen.blit(soul, (450, soulY))
                     pygame.display.flip()
                 elif event.key == pygame.K_RETURN:  # Confirm selection
                     if soulY == 100:
@@ -90,6 +98,10 @@ def main():
                     elif soulY == 150:
                         topic = 'Harry Potter'
                     elif soulY == 200:
+                        topic = 'Undertale'
+                    elif soulY == 250:
+                        topic = 'Deltarune'
+                    elif soulY == 300:
                         topic = 'All'
                     if topic:  # If a valid topic is selected
                         waiting_for_selection = False  # Exit the input loop
@@ -109,42 +121,68 @@ def main():
 
         random.shuffle(questions)
         score = 0
-
+        
         for q in questions:
             random.shuffle(q['options'])
-            display(f'Topic: {q["topic"]}',screen ,500,100)
-            display(f'Question: {q["question"]}',screen ,500,100)
+            display(f'Topic: {q["topic"]}', 0, screen, 100, 100)
+            display(f'Question: {q["question"]}', 0, screen, 100, 150)
             for i, option in enumerate(q['options'], 1):
-                display(f'{i}. {option}', screen, 500, 150 + i * 50)
+                display(f'{i}. {option}', 0, screen, 100, 150 + i * 50)
             pygame.display.flip()
-            screen.blit(pygame.image.load('Programming-3\TM_CP3\Quiz_program\download (1).png'), (450, soulY))
+
+            soulY = 200  # Reset soul position for each question
+            screen.blit(soul, (50, soulY))
             pygame.display.flip()
-            time.sleep(1)
-            for event in pygame.event.get():
-                if event.type == pygame.KEYDOWN:
-                    if event.key == pygame.K_DOWN:
-                        soulY += 50
-                        screen.blit(pygame.image.load('Programming-3\TM_CP3\Quiz_program\download (1).png'), (450, soulY))
-                    elif event.key == pygame.K_UP:
-                        soulY -= 50
-                        screen.blit(pygame.image.load('Programming-3\TM_CP3\Quiz_program\download (1).png'), (450, soulY))
-                    elif event.key == pygame.K_RETURN:
-                        if soulY == 100:
-                            answer = q['options'][0]
-                        elif soulY == 150:
-                            answer = q['options'][1]
-                        elif soulY == 200:
-                            answer = q['options'][2]
-                        elif soulY == 250:
-                            answer = q['options'][3]
-            screen.fill(BLACK)
+
+            waiting_for_answer = True
+            while waiting_for_answer:  # Wait for user input
+                for event in pygame.event.get():
+                    if event.type == pygame.QUIT:
+                        pygame.quit()
+                        return
+                    elif event.type == pygame.KEYDOWN:
+                        if event.key == pygame.K_DOWN and soulY < 350:  # Prevent moving out of bounds
+                            soulY += 50
+                            clear(screen)
+                            display(f'Topic: {q["topic"]}', 0, screen, 100, 100)
+                            display(f'Question: {q["question"]}', 0, screen, 100, 150)
+                            for i, option in enumerate(q['options'], 1):
+                                display(f'{i}. {option}', 0, screen, 100, 150 + i * 50)
+                            screen.blit(soul, (50, soulY))
+                            pygame.display.flip()
+                        elif event.key == pygame.K_UP and soulY > 200:  # Prevent moving out of bounds
+                            soulY -= 50
+                            clear(screen)
+                            display(f'Topic: {q["topic"]}', 0, screen, 100, 100)
+                            display(f'Question: {q["question"]}', 0, screen, 100, 150)
+                            for i, option in enumerate(q['options'], 1):
+                                display(f'{i}. {option}', 0, screen, 100, 150 + i * 50)
+                            screen.blit(soul, (50, soulY))
+                            pygame.display.flip()
+                        elif event.key == pygame.K_RETURN:  # Confirm selection
+                            if soulY == 200:
+                                answer = q['options'][0]
+                            elif soulY == 250:
+                                answer = q['options'][1]
+                            elif soulY == 300:
+                                answer = q['options'][2]
+                            elif soulY == 350:
+                                answer = q['options'][3]
+                            waiting_for_answer = False  # Exit the input loop
+
+            # Check the answer
+            clear(screen)
             if answer == q['answer']:
-                display("Correct!\n", 1, screen, 500, 100)
+                display("Correct!", 1, screen, 200, 100)
                 score += 1
             else:
-                display(f"Wrong! The correct answer was: {q['answer']}\n", 1, screen, 500, 100)
+                display(f"Wrong! The correct answer was: {q['answer']}", 1, screen, 200, 100)
             pygame.display.flip()
+            pygame.time.delay(1000)
+            pygame.display.flip()
+            clear(screen)
             time.sleep(1)
+        display(f"Your final score is: {score}/{len(questions)}")
 
 
 
