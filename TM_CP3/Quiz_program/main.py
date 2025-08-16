@@ -12,10 +12,12 @@ BLACK = (0, 0, 0)
 YELLOW = (255, 255, 0)
 RED = (255, 0, 0)
 
-
+def bgm():
+    music = pygame.mixer.Sound(r'TM_CP3\Quiz_program\Undertale OST 017 - Snowy.mp3')
+    pygame.mixer.Sound.play(music)
 def load_questions(topic):
     questions = []
-    with open('Programming-3\TM_CP3\Quiz_program\Questions.csv', 'r') as file:
+    with open('TM_CP3\Quiz_program\Questions.csv', 'r') as file:
         reader = csv.DictReader(file)
         for row in reader:
             if topic == 'All' or row['topic'] == topic:
@@ -40,16 +42,14 @@ def display(message, sec, screen, x=50, y=50, ): # Displays a message on the scr
         pygame.time.delay(sec * 1000)  # Waits a certain amount of seconds before continuing
 
 def main():
-    screen = pygame.display.set_mode((1200, 800))
+    screen = pygame.display.set_mode((1800, 1200))
     pygame.init()
     screen.fill(BLACK)
     pygame.display.set_caption('MTT Quiz')
-
+    bgm()
 
     topic = None
     display("Welcome to the MTT Quiz!", 2, screen)
-    clear(screen)
-    display("Press any key to start...", 2, screen)
     clear(screen)
     display("Choose a topic:", 0, screen)
     display("1. Full Metal Alchemist", 0, screen, x=500, y=100)
@@ -58,7 +58,7 @@ def main():
     display("4. Deltarune", 0, screen, x=500, y=250)
     display("3. All", 0, screen, x=500, y=300)
     soulY = 100
-    soul = pygame.image.load('Programming-3\TM_CP3\Quiz_program\soul.png')
+    soul = pygame.image.load('TM_CP3\Quiz_program\soul.png')
     soul = pygame.transform.scale(soul,(30,30))
     screen.blit(soul, (450, soulY))
     pygame.display.flip()
@@ -121,11 +121,12 @@ def main():
 
         random.shuffle(questions)
         score = 0
-        
+        number = 1
         for q in questions:
+            
             random.shuffle(q['options'])
             display(f'Topic: {q["topic"]}', 0, screen, 100, 100)
-            display(f'Question: {q["question"]}', 0, screen, 100, 150)
+            display(f'Question {number}: {q["question"]}', 0, screen, 100, 150)
             for i, option in enumerate(q['options'], 1):
                 display(f'{i}. {option}', 0, screen, 100, 150 + i * 50)
             pygame.display.flip()
@@ -145,7 +146,7 @@ def main():
                             soulY += 50
                             clear(screen)
                             display(f'Topic: {q["topic"]}', 0, screen, 100, 100)
-                            display(f'Question: {q["question"]}', 0, screen, 100, 150)
+                            display(f'Question {number}: {q["question"]}', 0, screen, 100, 150)
                             for i, option in enumerate(q['options'], 1):
                                 display(f'{i}. {option}', 0, screen, 100, 150 + i * 50)
                             screen.blit(soul, (50, soulY))
@@ -154,7 +155,7 @@ def main():
                             soulY -= 50
                             clear(screen)
                             display(f'Topic: {q["topic"]}', 0, screen, 100, 100)
-                            display(f'Question: {q["question"]}', 0, screen, 100, 150)
+                            display(f'Question {number}: {q["question"]}', 0, screen, 100, 150)
                             for i, option in enumerate(q['options'], 1):
                                 display(f'{i}. {option}', 0, screen, 100, 150 + i * 50)
                             screen.blit(soul, (50, soulY))
@@ -182,7 +183,8 @@ def main():
             pygame.display.flip()
             clear(screen)
             time.sleep(1)
-        display(f"Your final score is: {score}/{len(questions)}")
+            number +=1
+        display(f"Your final score is: {score}/{len(questions)}",0,screen,200,100)
 
 
 
@@ -204,7 +206,7 @@ def Terminal_test():
     for q in questions:
         random.shuffle(q['options'])
         print(f'Topic: {q["topic"]}')
-        print(f'Question: {q["question"]}')
+        print(f'Question {len(q)}: {q["question"]}')
         for i, option in enumerate(q['options'], 1):
             print(f'{i}. {option}')
         answer = input("Your answer: ")
