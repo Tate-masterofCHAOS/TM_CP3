@@ -3,6 +3,7 @@ import csv
 import random
 import time
 import os
+import moviepy
 
 
 
@@ -13,11 +14,11 @@ YELLOW = (255, 255, 0)
 RED = (255, 0, 0)
 
 def bgm():
-    music = pygame.mixer.Sound(r'TM_CP3\Quiz_program\Undertale OST 017 - Snowy.mp3')
+    music = pygame.mixer.Sound(r'Programming-3\TM_CP3\Quiz_program\Undertale OST 017 - Snowy.mp3')
     pygame.mixer.Sound.play(music)
 def load_questions(topic):
     questions = []
-    with open('TM_CP3\Quiz_program\Questions.csv', 'r') as file:
+    with open('Programming-3\TM_CP3\Quiz_program\Questions.csv', 'r') as file:
         reader = csv.DictReader(file)
         for row in reader:
             if topic == 'All' or row['topic'] == topic:
@@ -41,11 +42,17 @@ def display(message, sec, screen, x=50, y=50, ): # Displays a message on the scr
     if sec != 0:
         pygame.time.delay(sec * 1000)  # Waits a certain amount of seconds before continuing
 
+
+
+
+
+
 def main():
     screen = pygame.display.set_mode((1800, 1200))
     pygame.init()
     screen.fill(BLACK)
     pygame.display.set_caption('MTT Quiz')
+    pygame.display.set_icon(pygame.image.load(r'Programming-3\TM_CP3\Quiz_program\undertale-mettaton.gif'))
     bgm()
 
     topic = None
@@ -56,9 +63,10 @@ def main():
     display("2. Harry Potter", 0, screen, x=500, y=150)
     display("3. Undertale", 0, screen, x=500, y=200)
     display("4. Deltarune", 0, screen, x=500, y=250)
-    display("3. All", 0, screen, x=500, y=300)
+    display("5. The Legend of Zelda: Ocarina of Time", 0, screen, x= 500, y=300)
+    display("6. All", 0, screen, x=500, y=350)
     soulY = 100
-    soul = pygame.image.load('TM_CP3\Quiz_program\soul.png')
+    soul = pygame.image.load('Programming-3\TM_CP3\Quiz_program\soul.png')
     soul = pygame.transform.scale(soul,(30,30))
     screen.blit(soul, (450, soulY))
     pygame.display.flip()
@@ -70,7 +78,7 @@ def main():
                 pygame.quit()
                 return
             elif event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_DOWN and soulY < 300:  # Prevent moving out of bounds
+                if event.key == pygame.K_DOWN and soulY < 350:  # Prevent moving out of bounds
                     soulY += 50
                     clear(screen)
                     display("Choose a topic:", 0, screen)
@@ -78,7 +86,8 @@ def main():
                     display("2. Harry Potter", 0, screen, x=500, y=150)
                     display("3. Undertale", 0, screen, x=500, y=200)
                     display("4. Deltarune", 0, screen, x=500, y=250)
-                    display("3. All", 0, screen, x=500, y=300)
+                    display("5. The Legend of Zelda: Ocarina of Time", 0, screen, x= 500, y=300)
+                    display("6. All", 0, screen, x=500, y=350)
                     screen.blit(soul, (450, soulY))
                     pygame.display.flip()
                 elif event.key == pygame.K_UP and soulY > 100:  # Prevent moving out of bounds
@@ -89,7 +98,8 @@ def main():
                     display("2. Harry Potter", 0, screen, x=500, y=150)
                     display("3. Undertale", 0, screen, x=500, y=200)
                     display("4. Deltarune", 0, screen, x=500, y=250)
-                    display("3. All", 0, screen, x=500, y=300)
+                    display("5. The Legend of Zelda: Ocarina of Time", 0, screen, x= 500, y=300)
+                    display("6. All", 0, screen, x=500, y=350)
                     screen.blit(soul, (450, soulY))
                     pygame.display.flip()
                 elif event.key == pygame.K_RETURN:  # Confirm selection
@@ -102,7 +112,9 @@ def main():
                     elif soulY == 250:
                         topic = 'Deltarune'
                     elif soulY == 300:
-                        topic = 'All'
+                        topic = 'The Legend of Zelda: Ocarina of Time'
+                    elif soulY == 350:
+                        topic = 'all'
                     if topic:  # If a valid topic is selected
                         waiting_for_selection = False  # Exit the input loop
                 elif event.key == pygame.K_ESCAPE:  # Exit the program
@@ -185,6 +197,7 @@ def main():
             time.sleep(1)
             number +=1
         display(f"Your final score is: {score}/{len(questions)}",0,screen,200,100)
+        time.sleep(10)
 
 
 
