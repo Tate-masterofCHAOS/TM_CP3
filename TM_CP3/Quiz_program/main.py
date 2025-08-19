@@ -52,7 +52,6 @@ def main():
     screen.fill(BLACK)
     pygame.display.set_caption('MTT Quiz')
     pygame.display.set_icon(pygame.image.load(r'Programming-3\TM_CP3\Quiz_program\undertale-mettaton.gif'))
-    bgm()
 
     topic = None
     display("Welcome to the MTT Quiz!", 2, screen)
@@ -113,7 +112,7 @@ def main():
                     elif soulY == 300:
                         topic = 'The Legend of Zelda: Ocarina of Time'
                     elif soulY == 350:
-                        topic = 'all'
+                        topic = 'All'
                     if topic:  # If a valid topic is selected
                         waiting_for_selection = False  # Exit the input loop
                 elif event.key == pygame.K_ESCAPE:  # Exit the program
