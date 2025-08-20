@@ -5,7 +5,6 @@ import time
 import os
 
 
-
 #colors
 WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
@@ -51,7 +50,7 @@ def main():
     pygame.init()
     screen.fill(BLACK)
     pygame.display.set_caption('MTT Quiz')
-    pygame.display.set_icon(pygame.image.load(r'Programming-3\TM_CP3\Quiz_program\undertale-mettaton.gif'))
+    pygame.display.set_icon(pygame.image.load(r'Programming-3\TM_CP3\Quiz_program\soul.png'))
 
     topic = None
     display("Welcome to the MTT Quiz!", 2, screen)
@@ -110,7 +109,7 @@ def main():
                     elif soulY == 250:
                         topic = 'Deltarune'
                     elif soulY == 300:
-                        topic = 'The Legend of Zelda: Ocarina of Time'
+                        topic = 'Legend of Zelda: Ocarina of Time'
                     elif soulY == 350:
                         topic = 'All'
                     if topic:  # If a valid topic is selected
@@ -135,6 +134,28 @@ def main():
         for q in questions:
             
             random.shuffle(q['options'])
+            
+            if q["topic"] == 'Full Metal Alchemist':
+                topic_image = pygame.image.load(r'Programming-3\TM_CP3\Quiz_program\anime-symbols-full-metal-alchemist-homunculi-black-and-red-59twpz44gslsiv1o.webp')
+                tx = 1500
+                ty = 900
+            if q["topic"] == 'Harry Potter':
+                topic_image = pygame.image.load(r'Programming-3\TM_CP3\Quiz_program\d4hsdd9-66cc5469-fef0-42e8-b733-71742c80152d.png')
+                tx = 500
+                ty = 250
+            if q["topic"] == 'Undertale':
+                topic_image = pygame.image.load(r'Programming-3\TM_CP3\Quiz_program\FtF.webp')
+                tx = 1400
+                ty = 850
+            if q["topic"] == "Deltarune":
+                topic_image = pygame.image.load(r'Programming-3\TM_CP3\Quiz_program\maxresdefault.jpg')
+                tx = 500
+                ty = 400
+            if q["topic"] == "Legend of Zelda: Ocarina of Time":
+                topic_image = pygame.image.load(r'Programming-3\TM_CP3\Quiz_program\369725d60de1665f6e3d082313ed55ca.jpg')
+                tx = 1000
+                ty = 450
+            screen.blit(topic_image, (tx, ty))
             display(f'Topic: {q["topic"]}', 0, screen, 100, 100)
             display(f'Question {number}: {q["question"]}', 0, screen, 100, 150)
             for i, option in enumerate(q['options'], 1):
@@ -155,20 +176,24 @@ def main():
                         if event.key == pygame.K_DOWN and soulY < 350:  # Prevent moving out of bounds
                             soulY += 50
                             clear(screen)
+                            
+                            screen.blit(soul, (50, soulY))
+                            screen.blit(topic_image, (tx, ty))
                             display(f'Topic: {q["topic"]}', 0, screen, 100, 100)
                             display(f'Question {number}: {q["question"]}', 0, screen, 100, 150)
                             for i, option in enumerate(q['options'], 1):
                                 display(f'{i}. {option}', 0, screen, 100, 150 + i * 50)
-                            screen.blit(soul, (50, soulY))
                             pygame.display.flip()
                         elif event.key == pygame.K_UP and soulY > 200:  # Prevent moving out of bounds
                             soulY -= 50
                             clear(screen)
+                            
+                            screen.blit(soul, (50, soulY))
+                            screen.blit(topic_image, (tx, ty))
                             display(f'Topic: {q["topic"]}', 0, screen, 100, 100)
                             display(f'Question {number}: {q["question"]}', 0, screen, 100, 150)
                             for i, option in enumerate(q['options'], 1):
                                 display(f'{i}. {option}', 0, screen, 100, 150 + i * 50)
-                            screen.blit(soul, (50, soulY))
                             pygame.display.flip()
                         elif event.key == pygame.K_RETURN:  # Confirm selection
                             if soulY == 200:
