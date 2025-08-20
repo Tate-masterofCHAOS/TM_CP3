@@ -1,9 +1,9 @@
 4/50
 Legend of Zelda: Twilight Princess,"What creature does Link become while in the twilight","Wolf","Eagle","Horse","Stays as Link","Wolf"
 Legend of Zelda: Twilight Princess,"Who is the Twilight Princess","Midna","Zelda","Hilda","Tetra","Midna"
-Legend of Zelda: Twilight Princess,"What is the name of the projectile that can pick up stuff with wind","Gale Boomering","Gale Bow","Gale Cannon", "Gale Gannon"
-Legend of Zelda: Twilight Princess,"Of what species in Midna", "Twili", "Dusborn","Dawnbeing","Unknown","Twili"
-Legend of Zelda: Twilight Princess,"What is the default name for your horse","Epona","Edona","Elona","Senior Horse-face","Epona"
+Legend of Zelda: Twilight Princess,"What is the name of the projectile that can pick up stuff with wind","Gale Boomering","Gale Bow","Gale Cannon","Gale Gannon"
+Legend of Zelda: Twilight Princess,"Of what species in Midna","Twili","Dusborn","Dawnbeing","Unknown","Twili"
+Legend of Zelda: Twilight Princess,
 Legend of Zelda: Twilight Princess,
 Legend of Zelda: Twilight Princess,
 Legend of Zelda: Twilight Princess,
@@ -151,20 +151,20 @@ Phasmophobia,
 Phasmophobia,
 Phasmophobia,
 Phasmophobia,
-5/50
+8/50
 Hollow Knight,"What is the name of the character you play as","Unknown","Hollow Knight","Quirrel","Hornet","Unknown"
 Hollow Knight,"What is your relation to Hornet","Enemy","Half-Sibling","Friend","Sibling","Half-Sibling"
 Hollow Knight,"The Vessels are children of the Pale King and...","The White Lady","Herra","Lurilen","Monomon"
 Hollow Knight,"What is the name of the small town at the begining of the game","Dirtmouth","Mudpit","Soiltown","Rockworld","Dirtmouth"
 Hollow Knight,"What boss is being refered to in the classic meme "What are we going to fight the sun"","The Radience","The Hollow Knight","The Sun","Death","The Radience"
-Hollow Knight,
-Hollow Knight,
-Hollow Knight,
-Hollow Knight,
-Hollow Knight,
-Hollow Knight,
-Hollow Knight,
-Hollow Knight,
+Hollow Knight,"Which boss is located in Deepnest","Nosk","Broken Vessel","Hornet","Dung Defender","Nosk"
+Hollow Knight,"Which character was born in Deepnest","Hornet,"Nosk","Broken Vessel","Dung Defender","Hornet"
+Hollow Knight,"Where were the reject vessels placed","The Abyss","The Hole","The Void","Dumpster","The Abyss"
+Hollow Knight,"What is the name of the sequel that will (hopefull) get a release date soon","Silksong","Story of the Hollow Princess","Pale Court","Weaver's story","Silksong"
+Hollow Knight,"Which boss when beat gives you the ability to unlock double jump","Broken Vessel","Nosk","Winged Nosk","Mantis Lords","Broken Vessel"
+Hollow Knight,"What is the name of the leader of the Grimm Troupe","Troupe Leader Grimm","Troupe Leader Brumm","Troupe Leader Divine","Troupe Leader Hymm","Troupe Leader Grimm"
+Hollow Knight,"What boss gaurds Monomon the Teacher","Uumuu","Watcher Knights","Watcher Guards","Oomoo","Uumuu"
+Hollow Knight,"Who is Hornet's mother","Herrah","White Lady","Pale Queen","Monomon","Herrah"
 Hollow Knight,
 Hollow Knight,
 Hollow Knight,
@@ -213,7 +213,15 @@ One Shot,"How many areas are in One Shot","3","4","5","6","5"
 One Shot,"Where do you get the feather in One Shot","Alula and Clamitus","Silver","The Lamplighter","Random robot","Alula and Clamitus"
 One Shot,"Why was Silver in the Barrens","Creator died","Wanted Privacy","got kicked out","MMUUURRDDEEERRR","Got Kicked Out"
 One Shot,"What happens if you ask Niko to do a robot voice","They will say its silly and not do it","A Cute Moment","They get corrected by a nearby robot about what she said","They Do it until you ask them to stop","They get corrected by a nearby robot about what she said"
-One Shot,"What is your goal in One Shot","Get Niko home",Return the sun, 
+One Shot,"What is your goal in One Shot","Get Niko home","Return the sun","get the people out","kill the world","Get Niko home"
+One Shot,"How do you solve the first world machine puzzle","Drag the screen off the desktop","Find an object in the game","Find a text document in the files","Find the text document that has been downloaded on your desktop","Find the text document that has been downloaded on your desktop"
+One Shot,"How do you solve the second world machine puzzle","Input the pattern that your background has become","Find an object in the game","Delete the save file","Find the text document in the files","Input the pattern that your background has become"
+One Shot,"How do you solve the third world machine puzzle","Drag the screen off your desktop","Find an object in the game","Input the code from the new tab it just opened","Ask Niko","Drag the screen off the desktop"
+One Shot,"How do you start the solstice route","Locate a hole in the invisible wall and walk through in glen","Decypher the Author's journal","Delete the save file","Break the world machine","Delete the save file"
+One Shot,"Who is alula and clamitus","Citizens of the Refuge","Citizens of the Glen","Members of the church","Members of the Order","Citizens of the Glen"
+One Shot,"What is the best line","what's the right thing to do","For Niko, a dream, like thousand of other dreams. For you, a story, just like thousand of other stories","My mama makes them when i'm feeling sad... or... alone...","Goodbye, Player"
+One Shot,"What is the world machine","a AI designed to look after this world","A Damaged simulator running the remains of a dead world","The owner of the world","The villan","A Damaged simulator running the remains of a dead world"
+One Shot,"what is your role","God","Guide","Just you","Chara","God"
 One Shot,
 One Shot,
 One Shot,
@@ -245,12 +253,3 @@ One Shot,
 One Shot,
 One Shot,
 One Shot,
-One Shot,
-One Shot,
-One Shot,
-One Shot,
-One Shot,
-One Shot,
-One Shot,
-One Shot,
-
