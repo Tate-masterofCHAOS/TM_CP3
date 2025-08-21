@@ -61,7 +61,11 @@ def main():
     display("3. Undertale", 0, screen, x=500, y=200)
     display("4. Deltarune", 0, screen, x=500, y=250)
     display("5. The Legend of Zelda: Ocarina of Time", 0, screen, x= 500, y=300)
-    display("6. All", 0, screen, x=500, y=350)
+    display("6. The Legend of Zelda: Twilight Princess WIP", 0, screen, x= 500, y=350)
+    display("7. The Legend of Zelda: Majoras Mask WIP", 0, screen, x= 500, y=400)
+    display("8. Hollow Knight WIP", 0, screen, x=500, y=450)
+    display("9. One Shot WIP", 0, screen, x=500, y=500)
+    display("10. All", 0, screen, x=500, y=550)
     soulY = 100
     soul = pygame.image.load('Programming-3\TM_CP3\Quiz_program\soul.png')
     soul = pygame.transform.scale(soul,(30,30))
@@ -75,7 +79,7 @@ def main():
                 pygame.quit()
                 return
             elif event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_DOWN and soulY < 350:  # Prevent moving out of bounds
+                if event.key == pygame.K_DOWN and soulY < 550:  # Prevent moving out of bounds
                     soulY += 50
                     clear(screen)
                     display("Choose a topic:", 0, screen)
@@ -84,7 +88,11 @@ def main():
                     display("3. Undertale", 0, screen, x=500, y=200)
                     display("4. Deltarune", 0, screen, x=500, y=250)
                     display("5. The Legend of Zelda: Ocarina of Time", 0, screen, x= 500, y=300)
-                    display("6. All", 0, screen, x=500, y=350)
+                    display("6. The Legend of Zelda: Twilight Princess WIP", 0, screen, x= 500, y=350)
+                    display("7. The Legend of Zelda: Majoras Mask WIP", 0, screen, x= 500, y=400)
+                    display("8. Hollow Knight WIP", 0, screen, x=500, y=450)
+                    display("9. One Shot WIP", 0, screen, x=500, y=500)
+                    display("10. All", 0, screen, x=500, y=550)
                     screen.blit(soul, (450, soulY))
                     pygame.display.flip()
                 elif event.key == pygame.K_UP and soulY > 100:  # Prevent moving out of bounds
@@ -96,7 +104,11 @@ def main():
                     display("3. Undertale", 0, screen, x=500, y=200)
                     display("4. Deltarune", 0, screen, x=500, y=250)
                     display("5. The Legend of Zelda: Ocarina of Time", 0, screen, x= 500, y=300)
-                    display("6. All", 0, screen, x=500, y=350)
+                    display("6. The Legend of Zelda: Twilight Princess WIP", 0, screen, x= 500, y=350)
+                    display("7. The Legend of Zelda: Majoras Mask WIP", 0, screen, x= 500, y=400)
+                    display("8. Hollow Knight WIP", 0, screen, x=500, y=450)
+                    display("9. One Shot WIP", 0, screen, x=500, y=500)
+                    display("10. All", 0, screen, x=500, y=550)
                     screen.blit(soul, (450, soulY))
                     pygame.display.flip()
                 elif event.key == pygame.K_RETURN:  # Confirm selection
