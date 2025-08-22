@@ -16,7 +16,7 @@ def bgm():
     pygame.mixer.Sound.play(music)
 def load_questions(topic):
     questions = []
-    with open('Programming-3\TM_CP3\Quiz_program\Questions.csv', 'r') as file:
+    with open('TM_CP3\Quiz_program\Questions.csv', 'r') as file:
         reader = csv.DictReader(file)
         for row in reader:
             if topic == 'All' or row['topic'] == topic:
@@ -50,7 +50,7 @@ def main():
     pygame.init()
     screen.fill(BLACK)
     pygame.display.set_caption('MTT Quiz')
-    pygame.display.set_icon(pygame.image.load(r'Programming-3\TM_CP3\Quiz_program\soul.png'))
+    pygame.display.set_icon(pygame.image.load(r'TM_CP3\Quiz_program\soul.png'))
 
     topic = None
     display("Welcome to the MTT Quiz!", 2, screen)
@@ -67,7 +67,7 @@ def main():
     display("9. One Shot WIP", 0, screen, x=500, y=500)
     display("10. All", 0, screen, x=500, y=550)
     soulY = 100
-    soul = pygame.image.load('Programming-3\TM_CP3\Quiz_program\soul.png')
+    soul = pygame.image.load('TM_CP3\Quiz_program\soul.png')
     soul = pygame.transform.scale(soul,(30,30))
     screen.blit(soul, (450, soulY))
     pygame.display.flip()
@@ -123,6 +123,14 @@ def main():
                     elif soulY == 300:
                         topic = 'Legend of Zelda: Ocarina of Time'
                     elif soulY == 350:
+                        topic = 'Legend of Zelda: Twilight Princess'
+                    elif soulY == 400:
+                        topic = 'Legend of Zelda: Majoras Mask'
+                    elif soulY == 450:
+                        topic = 'Hollow Knight'
+                    elif soulY == 500:
+                        topic = 'One Shot'
+                    elif soulY == 550:
                         topic = 'All'
                     if topic:  # If a valid topic is selected
                         waiting_for_selection = False  # Exit the input loop
@@ -167,6 +175,22 @@ def main():
                 topic_image = pygame.image.load(r'Programming-3\TM_CP3\Quiz_program\369725d60de1665f6e3d082313ed55ca.jpg')
                 tx = 1000
                 ty = 450
+            if q["topic"] == 'Legend of Zelda: Twilight Princess':
+                topic_image = pygame.image.load(r'TM_CP3\Quiz_program\photo-coming-soon-no-photos-260nw-2330163833 (1).webp')
+                tx = 1500
+                ty = 900
+            if q["topic"] == 'Legend of Zelda: Majoras Mask':
+                topic_image = pygame.image.load(r'TM_CP3\Quiz_program\photo-coming-soon-no-photos-260nw-2330163833 (1).webp')
+                tx = 500
+                ty = 250
+            if q["topic"] == 'Hollow Knight':
+                topic_image = pygame.image.load(r'TM_CP3\Quiz_program\photo-coming-soon-no-photos-260nw-2330163833 (1).webp')
+                tx = 1400
+                ty = 850
+            if q["topic"] == 'One Shot':
+                topic_image = pygame.image.load(r'TM_CP3\Quiz_program\photo-coming-soon-no-photos-260nw-2330163833 (1).webp')
+                tx = 500
+                ty = 400
             screen.blit(topic_image, (tx, ty))
             display(f'Topic: {q["topic"]}', 0, screen, 100, 100)
             display(f'Question {number}: {q["question"]}', 0, screen, 100, 150)
