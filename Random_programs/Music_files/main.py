@@ -30,8 +30,22 @@ mixer.music.play()
 if vid == "2":
     if choice == "1":
         cap = cv2.VideoCapture(r"Programming-3\Random_programs\Video_files\videoplayback.mp4")
+        while True:
+            ret, frame = cap.read()
+            if not ret:
+                break # End of video
+            cv2.imshow('Video Playback', frame)
+            if cv2.waitKey(25) & 0xFF == ord('q'): # Adjust delay (25ms) and 'q' to quit
+                break
     if choice == "2":
         cap = cv2.VideoCapture(r"Programming-3\Random_programs\Video_files\Fullmetal Alchemist Brotherhood Opening 4 (Chemistry - Period).mp4")
+        while True:
+            ret, frame = cap.read()
+            if not ret:
+                break # End of video
+            cv2.imshow('Video Playback', frame)
+            if cv2.waitKey(25) & 0xFF == ord('q'): # Adjust delay (25ms) and 'q' to quit
+                break
     success, img = cap.read()
     shape = img.shape[1::-1]
     wn = pygame.display.set_mode(shape)
