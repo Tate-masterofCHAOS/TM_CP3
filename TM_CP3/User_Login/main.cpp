@@ -12,5 +12,17 @@ int main(){
     string name;
     cin >> name;
     int admin_user = admin.find(name);
+    if (admin_user != string::npos){
+        cout << "Welcome Admin" << endl;
+    }
+    else{
+        int user_user = users.find(name);
+        if (user_user != string::npos){
+            cout << "Welcome User" << endl;
+        }
+        else{
+            cout << "You are not a user lets get you signed up " << name << endl;
+        }
+    }
     return 0;
 }

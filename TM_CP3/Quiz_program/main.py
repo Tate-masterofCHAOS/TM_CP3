@@ -12,7 +12,7 @@ YELLOW = (255, 255, 0)
 RED = (255, 0, 0)
 
 def bgm():
-    music = pygame.mixer.Sound(r'Programming-3\TM_CP3\Quiz_program\Undertale OST 017 - Snowy.mp3')
+    music = pygame.mixer.Sound(r'TM_CP3\Quiz_program\Undertale OST 017 - Snowy.mp3')
     pygame.mixer.Sound.play(music)
 def load_questions(topic):
     questions = []
@@ -156,23 +156,23 @@ def main():
             random.shuffle(q['options'])
             
             if q["topic"] == 'Full Metal Alchemist':
-                topic_image = pygame.image.load(r'Programming-3\TM_CP3\Quiz_program\anime-symbols-full-metal-alchemist-homunculi-black-and-red-59twpz44gslsiv1o.webp')
+                topic_image = pygame.image.load(r'TM_CP3\Quiz_program\anime-symbols-full-metal-alchemist-homunculi-black-and-red-59twpz44gslsiv1o.webp')
                 tx = 1500
                 ty = 900
             if q["topic"] == 'Harry Potter':
-                topic_image = pygame.image.load(r'Programming-3\TM_CP3\Quiz_program\d4hsdd9-66cc5469-fef0-42e8-b733-71742c80152d.png')
+                topic_image = pygame.image.load(r'TM_CP3\Quiz_program\d4hsdd9-66cc5469-fef0-42e8-b733-71742c80152d.png')
                 tx = 500
                 ty = 250
             if q["topic"] == 'Undertale':
-                topic_image = pygame.image.load(r'Programming-3\TM_CP3\Quiz_program\FtF.webp')
+                topic_image = pygame.image.load(r'TM_CP3\Quiz_program\FtF.webp')
                 tx = 1400
                 ty = 850
             if q["topic"] == "Deltarune":
-                topic_image = pygame.image.load(r'Programming-3\TM_CP3\Quiz_program\maxresdefault.jpg')
+                topic_image = pygame.image.load(r'TM_CP3\Quiz_program\maxresdefault.jpg')
                 tx = 500
                 ty = 400
             if q["topic"] == "Legend of Zelda: Ocarina of Time":
-                topic_image = pygame.image.load(r'Programming-3\TM_CP3\Quiz_program\369725d60de1665f6e3d082313ed55ca.jpg')
+                topic_image = pygame.image.load(r'TM_CP3\Quiz_program\369725d60de1665f6e3d082313ed55ca.jpg')
                 tx = 1000
                 ty = 450
             if q["topic"] == 'Legend of Zelda: Twilight Princess':
