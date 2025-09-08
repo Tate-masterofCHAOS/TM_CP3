@@ -14,6 +14,10 @@ void divide(int* list, int size){
     cout << "THESE ARE NUMBERS " << *numbers << endl;
 }
 
+int capacity = 5;
+int* sanity = new int[capacity];
+int entries = 0;
+
 int main(){
     int num = 4;
     int* pnum = &num;
@@ -38,27 +42,42 @@ int main(){
     const int* const pmonth = &month;
 
     divide(numbers, size(numbers));
+    //cout << (pnum == pday) << endl;
+    //cout << (pnum < pday) << endl;
+    cout << (pnum > pday) << endl;
+    if (pnum != nullptr){
+        cout << * pnum << endl;
+        pnum++;
+    }
+    cout << *pnum << endl;
+
+
+    
+    while (true){
+        cout << "Number: " << endl;
+        cin >> sanity[entries];
+        if(cin.fail()) break;
+        entries++;
+        if(entries == capacity){
+            capacity += 5;
+            
+            int* temp = new int[capacity];
+            for(int i = 0; i < entries; i++){
+                temp[i] = sanity[i];
+            }
+            delete[] sanity;
+            sanity =  temp;
+        }
+    }
+
+    for (int i=0; i < entries; i++){
+        cout << sanity[i] << endl;
+    }
+    delete[] sanity;
+
+
     return 0;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -77,12 +96,14 @@ int main(){
 //Why would you pass a pointer to a function?
     //sometimes you have a very large piece of data you need in your function and you dont want to copy it all into your parameter
 //How do you compare pointers?
-    //
+    //cout << (pnum == pday) << endl;
+    //cout << (pnum < pday) << endl;
+    //cout << (pnum > pday) << endl;
 //What is dynamic memory allocation?
-    //
+    //dynamically chaning size of an array
 //What is the Stack?
-    //
+    //An area of memory used for managing function calls. local variables, and control flow. It is managed by the compilerfor quick allocatiion of memory
 //What is the Heap?
-    //
+    //An area of memory used for dynamic memory. Stores data if the size is uknonw at the time of compiling. Memory must be manulally managed by the program. Used for flexible ;pve lived storage of complex data objects, and large files
 //What are smart pointers?
-    //
+    //unigue: owns that piece pf the memory allowing notjhing else to use it using classes. Shared: Can have mulitple pointers pointing at the same person
