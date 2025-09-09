@@ -1,12 +1,7 @@
 {
     "files.associations": {
         "iostream": "cpp",
-        "limits": "cpp",
-        "ostream": "cpp",
-        "array": "cpp",
-        "string_view": "cpp",
-        "initializer_list": "cpp",
-        "span": "cpp",
-        "string": "cpp"
+        "string": "cpp",
+        "format": "cpp"
     }
 }
