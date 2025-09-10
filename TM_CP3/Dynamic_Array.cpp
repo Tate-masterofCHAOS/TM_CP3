@@ -15,12 +15,15 @@ int main(){
     cout << "Indie Work: " << endl;
     while (true){
         
-        cin >> indie_work[entries];
+        getline(cin, indie_work[entries]);
         if(cin.fail()){
             break;
         }else if(indie_work[entries] == "quit"){
             break;
+        }else{
+            indie_work[entries].append(",");
         }
+        
         entries++;
         if(entries == capacity){
             capacity += 5;
@@ -36,7 +39,7 @@ int main(){
     
     cout <<  "YOU SAID ";
     for (int i=0; i < entries; i++){
-        cout << indie_work[i];
+        cout << indie_work[i] << " ";
     }
     delete[] indie_work;
 
