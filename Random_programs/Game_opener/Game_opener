@@ -1,5 +1,5 @@
 import webbrowser
-import keyboard
+
 
 
 # Open a new tab with a specific URL
