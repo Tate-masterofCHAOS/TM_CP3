@@ -12,6 +12,17 @@ struct user{
     string password;
     bool admin;
 };
+
+
+bool operator== (const user& first, user second ){
+        return (first.name == second.name && 
+            first.password == second.password && 
+            first.admin == second.admin
+        );
+}
+
+
+
 int main(){
     user user1 = {"Tate", "1", true};
     user user2 = {"Tat", "2", false};
@@ -23,60 +34,60 @@ int main(){
     user user8 = {"Dae", "8", false};
     user user9 = {"Dte", "9", false};
     user user10 = {"Tavy", "10", false};
-    string users[] = {user1.name, user2.name, user3.name, user4.name, user5.name, user6.name, user7.name, user8.name, user9.name, user10.name};
-    string passwords[] = {user1.password, user2.password, user3.password, user4.password, user5.password, user6.password, user7.password, user8.password, user9.password, user10.password};
-    bool admins[] = {user1.admin, user2.admin, user3.admin, user4.admin, user5.admin, user6.admin, user7.admin, user8.admin, user9.admin, user10.admin};
-    cout << "What is your name" << endl;
+    user users[] = {user1, user2, user3, user4, user5, user6, user7, user8, user9, user10};
+    cout << "Welcome to the login system, please enter your username: " << endl;
     string name;
     cin >> name;
     bool found = false;
-    for (int i = 0; i < 10; ++i) {
-        if (users[i] == name) {
+    for(int i=0;i<10;i++){
+        if(users[i].name == name){
             found = true;
-            string current_user = users[i];
-            break;
-        }
-    }
-    
-    if (found) {
-        bool found_password = false;
-        cout << "What is your password" << endl;
-        string password;
-        cin >> password;
-        for (int i = 0; i < 10; ++i) {
-            if (passwords[i] == password) {
-                found_password = true;
-                break;
+            cout << "Please enter your password: ";
+            string password;
+            cin >> password;
+            if(users[i].password == password){
+                cout << "Welcome " << users[i].name << endl;
+                if(users[i].admin){
+                    cout << "You have admin access" << endl;
+                }else{
+                    cout << "You have user access" << endl;
+                }
+            }else{
+                cout << "Incorrect password" << endl;
+                cout << "Would you like to sign up?" << endl;
+                string answer;
+                cin >> answer;
+                if(answer == "yes"){
+                    cout << "Please enter a new username: ";
+                    string new_name;
+                    cin >> new_name;
+                    cout << "Please enter a new password: ";
+                    string new_password;
+                    cin >> new_password;
+                    user new_user = {new_name, new_password, false};
+                    cout << "Account created, welcome " << new_user.name << endl;
+                }
             }
         }
-        if (found_password) {
-        cout << "You are now logged in." << endl;
-        for (int i = 0; i < 10; ++i) {
-            if (users[i] == name && admins[i]) {
-                cout << "You are an admin." << endl;
-                break;
-            }
-        }
-        } else {
-            cout << "Incorrect password." << endl;
-        }
-    } else {
-        cout << "User not found, would you like to sign up." << endl;
-        string response;
-        cin >> response;
-        if (response == "yes") {
-            cout << "What would you like your username to be?" << endl;
-            string new_name;
-            cin >> new_name;
-            cout << "What would you like your password to be?" << endl;
-            string new_password;
-            cin >> new_password;
-            cout << "You are now signed up, please restart the program to log in." << endl;
-            user new_user = {new_name, new_password, false};
-        } else {
-            cout << "Goodbye." << endl;
-        }
+        else {cout << "Would you like to sign up?" << endl;
+                string answer;
+                cin >> answer;
+                if(answer == "yes"){
+                    cout << "Please enter a new username: ";
+                    string new_name;
+                    cin >> new_name;
+                    cout << "Please enter a new password: ";
+                    string new_password;
+                    cin >> new_password;
+                    user new_user = {new_name, new_password, false};
+                    cout << "Account created, welcome " << new_user.name << endl;
+                }}
+    cout << "Would you like to return to main menu?" << endl;
+    string answer;
+    cin >> answer;
+    if(answer == "yes"){
+        main();
     }
-    
     return 0;
+}
 }
