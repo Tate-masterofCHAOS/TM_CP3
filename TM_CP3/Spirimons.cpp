@@ -4,7 +4,13 @@
 #include <cstdlib>
 #include <ctime>
 #include <windows.h>
+#include <gdiplus.h>
+#pragma comment (lib, "gdiplus.lib")
+using namespace Gdiplus;
 using namespace std;  
+
+ULONG_PTR gdiplusToken;
+Image* gImage = nullptr;
 
 struct Mon{ 
     string name;
@@ -23,7 +29,9 @@ struct Mon{
 };
 
 
-int main(){
+
+
+int WinMain(){
     Mon mon0 = {"Larose", 5, 5, 5, 5, "", "Normal", "", ""};
     Mon mon1 = {"Luke", 5, 5, 5, 5, "The lost man mon", "Spirit", "Light", "After spending most of their life in haunted areas has infused them with many curses and possesions but unlike many spirit types they are uneffected to light and will use flashlights to blind it's prey before attacking"};
     Mon mon2 = {"Nick", 5, 5, 5, 5, "The tickler mon", "Zombie", "Humor", "While slow, they get stronger the more damage they have done. To stun their prey they will tickle...that's it"};
@@ -32,9 +40,14 @@ int main(){
     Mon mon5 = {"Darius", 5, 5, 5, 5, "The presidential mon", "Political", "Spirit", "Anybody who has been within the white house would know it is unnaturally cold, the reason for that is this mon always watching over his successors and making sure the ones he doesnt like dont get re-elected"};
     Mon mon6 = {"Vincent", 5, 5, 5, 5, "The strongest climbing mon", "Climber", "Swole", "The only living mon left, it spends eternity climbing random ledges"};
 
-    CreateWindowA("STATIC","Welcome to the Spirimons world",WS_VISIBLE | WS_CHILD | SS_CENTER,100,100,300,50,NULL,NULL,NULL,NULL);
+    
+    
+    CreateWindowEx(NULL, "STATIC", "Spirimons", WS_VISIBLE | WS_OVERLAPPEDWINDOW, 0, 0, 5000, 5000, NULL, NULL, NULL, NULL);
     ShowWindow(GetConsoleWindow(), SW_HIDE);
-    Sleep(3000);
+    MessageBox(NULL, "Welcome to Spirimons, a world where spirits and monsters exist", "Spirimons", MB_OK | MB_ICONINFORMATION);
+    int choice = 0;
+    MessageBox(NULL, "You have a choice between three starter spirimons", "Spirimons", MB_OK | MB_ICONINFORMATION);
+    
+    
 
-    return 0;
 }
