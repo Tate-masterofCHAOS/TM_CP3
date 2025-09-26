@@ -4,7 +4,9 @@
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
-#include <miniaudio.h>
+#include <windows.h>
+//these two headers are already included in the <Windows.h> header
+#pragma comment(lib, "Winmm.lib")
 using namespace std;  
 
 bool feld = false;
@@ -76,6 +78,7 @@ struct party{
             }
         } else if (action == "2") {
             cout << mona.name << " healed 10 health!" << endl;
+            PlaySound(TEXT("111-pokemon-recovery.wav"), NULL, SND_ASYNC);
             mona.health += 10;
         } else if (action == "3") {
             cout << "You threw a pokeball!" << endl;
@@ -147,6 +150,7 @@ struct party{
         return 0;
     }
     void battle_mon(Mon opponent, party party){
+        PlaySound(TEXT("battlemon.wav"), NULL, SND_FILENAME | SND_ASYNC);
         cout << "A battle has started between " << mona.name << " and " << opponent.name << "!" << endl;
         opponent.health = opponent.health + (rand() % 10); //randomize opponent health a bit
         if (mona.health <= 0){
@@ -232,6 +236,7 @@ struct party{
             }
         } else if (action == "2") {
             cout << mona.name << " healed 10 health!" << endl;
+            PlaySound("111-pokemon-recovery.wav", NULL, SND_SYNC);
             mona.health += 10;
         } else if (action == "3") {
             cout << "You threw a pokeball!" << endl;
@@ -304,7 +309,7 @@ int gameplay(party p){
             cout << "You chose to fight Barry!" << endl;
             //battle function here
         } else if (choice == "2") {
-            cout << "You chose to find a wild mon!" << endl;
+            
             //random choice between all mons
             int mon_choice = rand() % 7; //randomly chooses between mon0 and mon7
             Mon opponent;
@@ -325,7 +330,7 @@ int gameplay(party p){
             } else if (mon_choice == 7) {
                 opponent = mon7;
             }
-            
+            cout << "You chose to find a wild mon!" << endl;
             p.battle_mon(opponent, p);
         } else if (choice == "3") {
             cout << "You chose to check your mon's stats!" << endl;
@@ -338,7 +343,7 @@ int gameplay(party p){
             cout << "Attacks: " << p.mona.attack1 << ", " << p.mona.attack2 << ", " << p.mona.attack3 << ", " << p.mona.attack4 << endl;
         } else if (choice == "4") {
             cout << "You chose to heal your mon!" << endl;
-            PlaySound(TEXT("P:\\Morgan, Tate\\TM_CP3-1\\TM_CP3\\spirimons\\111-pokemon-recovery.mp3"), NULL, SND_FILENAME | SND_SYNC);
+            PlaySound("111-pokemon-recovery.wav", NULL, SND_ASYNC);
             p.mona.health + 10;
         } else if (choice == "5") {
             cout << "Exiting game. Goodbye!" << endl;
