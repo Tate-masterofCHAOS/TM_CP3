@@ -5,13 +5,12 @@
 #include <cstdlib>
 #include <ctime>
 #include <windows.h>
-#include <gdiplus.h>
-#pragma comment (lib, "gdiplus.lib")
-using namespace Gdiplus;
+//these two headers are already included in the <Windows.h> header
+#pragma comment(lib, "Winmm.lib")
 using namespace std;  
 
 bool feld = false;
-struct Mon{ 
+struct Mon{
     string name;
     int DEF;
     int SPD;
@@ -83,7 +82,7 @@ struct party{
         } else if (action == "3") {
             cout << "You threw a pokeball!" << endl;
             int catch_chance = rand() % 100;
-            if (catch_chance < 25) {
+            if (catch_chance < 50) {
                 cout << "You caught " << opponent.name << "!" << endl;
                 if (party.mona.name == "") {
                     party.mona = opponent;
@@ -152,6 +151,9 @@ struct party{
     void battle_mon(Mon opponent, party party){
         cout << "A battle has started between " << mona.name << " and " << opponent.name << "!" << endl;
         opponent.health = opponent.health + (rand() % 10); //randomize opponent health a bit
+        if (mona.health <= 0){
+            mona.health ++;
+        }
         feld = false; // Reset feld at the start of battle
         while (mona.health > 0 && opponent.health > 0 && !feld) {
             cout << mona.name << " Health: " << mona.health << endl;
@@ -336,9 +338,18 @@ int gameplay(party p){
             cout << "Agility: " << p.mona.agility << endl;
             cout << "Health: " << p.mona.health << endl;
             cout << "Attacks: " << p.mona.attack1 << ", " << p.mona.attack2 << ", " << p.mona.attack3 << ", " << p.mona.attack4 << endl;
+            if (p.monb){
+                p.monb.name << " the " << p.mon.title << endl;
+                cout << "Type: " << p.mona.type << " / " << p.mona.dualType << endl;
+                cout << "DEF: " << p.monb.DEF << endl;
+                cout << "SPD: " << p.monb.SPD << endl;
+                cout << "Agility: " << p.monb.agility << endl;
+                cout << "Health: " << p.monb.health << endl;
+                cout << "Attacks: " << p.monb.attack1 << ", " << p.monb.attack2 << ", " << p.monb.attack3 << ", " << p.monb.attack4 << endl;
+            }
         } else if (choice == "4") {
             cout << "You chose to heal your mon!" << endl;
-            //healing function here
+            p.mona.health + 10;
         } else if (choice == "5") {
             cout << "Exiting game. Goodbye!" << endl;
             running = false;
