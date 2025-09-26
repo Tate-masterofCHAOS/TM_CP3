@@ -4,9 +4,7 @@
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
-#include <windows.h>
-//these two headers are already included in the <Windows.h> header
-#pragma comment(lib, "Winmm.lib")
+#include <miniaudio.h>
 using namespace std;  
 
 bool feld = false;
@@ -338,17 +336,9 @@ int gameplay(party p){
             cout << "Agility: " << p.mona.agility << endl;
             cout << "Health: " << p.mona.health << endl;
             cout << "Attacks: " << p.mona.attack1 << ", " << p.mona.attack2 << ", " << p.mona.attack3 << ", " << p.mona.attack4 << endl;
-            if (p.monb){
-                p.monb.name << " the " << p.mon.title << endl;
-                cout << "Type: " << p.mona.type << " / " << p.mona.dualType << endl;
-                cout << "DEF: " << p.monb.DEF << endl;
-                cout << "SPD: " << p.monb.SPD << endl;
-                cout << "Agility: " << p.monb.agility << endl;
-                cout << "Health: " << p.monb.health << endl;
-                cout << "Attacks: " << p.monb.attack1 << ", " << p.monb.attack2 << ", " << p.monb.attack3 << ", " << p.monb.attack4 << endl;
-            }
         } else if (choice == "4") {
             cout << "You chose to heal your mon!" << endl;
+            PlaySound(TEXT("P:\\Morgan, Tate\\TM_CP3-1\\TM_CP3\\spirimons\\111-pokemon-recovery.mp3"), NULL, SND_FILENAME | SND_SYNC);
             p.mona.health + 10;
         } else if (choice == "5") {
             cout << "Exiting game. Goodbye!" << endl;
@@ -358,6 +348,7 @@ int gameplay(party p){
             running = false;
         }
     }
+    return 0;
 }
 int main() {
     
