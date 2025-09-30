@@ -4,8 +4,15 @@
 #include <limits>
 #include <fstream>
 #include <iomanip>
+#include <vector>
 
 using namespace std;
+
+struct Movie{
+    int id;
+    string title;
+    int year;
+};
 
 int getNumber(const string& promt){
     int num;
@@ -26,22 +33,56 @@ int main(){
 
     int first = getNumber("First: \n");
     int second = getNumber("second: \n");
-    cout << "You entered " << first << " and " << second;
-
-    ofstream file;
-    file.open("data.txt");
-    if(file.is_open()){
-        file << setw(20) << "Hello " << setw(20) << "world";
-        file.close();
+    cout << "You entered " << first << " and " << second << endl;
+/*
+    ofstream ofile;
+    ofile.open("data.txt");
+    if(ofile.is_open()){
+        ofile << setw(20) << "Hello " << setw(20) << "world";
+        ofile.close();
+    }
+    ifstream ifile;
+    ifile.open("data.txt");
+    if(ifile.is_open()){
+        string str;
+        ifile >> str;
+        cout << str;
+        ifile.close();
     }
 
-    file.open("data.csv");
-    if(file.is_open()){
-        file << "id, title, year\n"
+    ofile.open("data.csv");
+    if(ofile.is_open()){
+        ofile << "id, title, year\n"
         << "1, Terminator 1, 1984\n"
         << "2, Terminator 1, 1991\n";
-        file.close();
+        ofile.close();
     }
+*/
+    ifstream ifile;
+    ifile.open("data.csv");
+    string str;
+    vector<Movie> movies;
+    if(ifile.is_open()){
+        while(ifile.eof()){
+            getline(ifile, str, ',');
+            Movie movie;
+            movie.id = stoi(str);
+
+            getline(ifile, str, ',');
+            movie.title = str;
+
+            getline(ifile, str, ',');
+            movie.year = stoi(str);
+
+            movies.push_back(movie);
+        }
+        ifile.close();
+        for(Movie i: movies){
+            cout << i.title;
+        }
+    }
+
+    
     /*
     ifstream > input files stream
     ofstream < output file stream
@@ -85,12 +126,60 @@ int main(){
 //How do you write to a CSV?
     //same as text file
 //How do you read a text file?
-    //
+    /*ifstream ifile;
+    ifile.open("data.txt");
+    if(ifile.is_open()){
+        string str;
+        getline(ifile, str);
+        cout << str;
+        ifile.close();
+    }*/
 //How do you read a CSV file?
-    //
+    /*ifstream ifile;
+    ifile.open("data.csv");
+    if(ifile.is_open()){
+        string str;
+        getline(ifile, str);
+        cout << str;
+        ifile.close();
+    }*/
 //What is a delimiter?
-    //
+    //A deliminater is a speciial character to tell when to stop and can be used in csv to show catagories
 //How do you read an entire CSV?
-    //
+    /*ifstream ifile;
+    ifile.open("data.csv");
+    if(ifile.is_open()){
+    while(!ifile.eof()){
+        string str;
+            getline(ifile, str, ',');
+            if(str.empty()) continue;
+            Movie movie;
+            movie.id = stoi(str);
+
+            getline(ifile, str, ',');
+            movie.title = str;
+
+            getline(ifile, str, ',');
+            movie.year = stoi(str);
+            cout << str;
+            ifile.close();
+        }
+    }
+*/
 //How do you turn items from a CSV into objects of a structure?
-    //
+    /*while(!ifile.eof()){
+        string str;
+            getline(ifile, str, ',');
+            if(str.empty()) continue;
+            Movie movie;
+            movie.id = stoi(str);
+
+            getline(ifile, str, ',');
+            movie.title = str;
+
+            getline(ifile, str, ',');
+            movie.year = stoi(str);
+            cout << str;
+            ifile.close();
+        }
+    }*/
