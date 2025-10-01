@@ -53,32 +53,36 @@ int main(){
     ofile.open("data.csv");
     if(ofile.is_open()){
         ofile << "id, title, year\n"
-        << "1, Terminator 1, 1984\n"
-        << "2, Terminator 1, 1991\n";
+        << "1,Terminator 1,1984\n"
+        << "2,Terminator 2,1991\n";
         ofile.close();
     }
 */
     ifstream ifile;
     ifile.open("data.csv");
-    string str;
+    string line;
     vector<Movie> movies;
     if(ifile.is_open()){
-        while(ifile.eof()){
-            getline(ifile, str, ',');
+        getline(ifile, line);
+        while(getline(ifile,line)){
+            istringstream iss(line);
+            string item;
+            
             Movie movie;
-            movie.id = stoi(str);
+            getline(iss, item, ',');
+            movie.id = stoi(item);
 
-            getline(ifile, str, ',');
-            movie.title = str;
+            getline(iss, item, ',');
+            movie.title = item;
 
-            getline(ifile, str, ',');
-            movie.year = stoi(str);
+            getline(iss, item, ',');
+            movie.year = stoi(item);
 
             movies.push_back(movie);
         }
         ifile.close();
         for(Movie i: movies){
-            cout << i.title;
+            cout << i.title << endl;
         }
     }
 
@@ -167,19 +171,8 @@ int main(){
     }
 */
 //How do you turn items from a CSV into objects of a structure?
-    /*while(!ifile.eof()){
-        string str;
-            getline(ifile, str, ',');
-            if(str.empty()) continue;
-            Movie movie;
-            movie.id = stoi(str);
-
-            getline(ifile, str, ',');
-            movie.title = str;
-
-            getline(ifile, str, ',');
-            movie.year = stoi(str);
-            cout << str;
-            ifile.close();
-        }
+    /*getting our line
+    breaking line into pieces
+    saving pieces into structure
+    repeating for all lines
     }*/

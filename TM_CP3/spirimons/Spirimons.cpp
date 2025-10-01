@@ -248,7 +248,7 @@ struct party{
         }
     return 0;
     }
-    int battle_brarry(Mon opponent, party party){
+    void    g++ Spirimons.cpp -o Spirimons.exe -lwinmm battle_brarry(Mon opponent, party party){
         cout << "A battle has started between " << mona.name << " and " << opponent.name << "!" << endl;
         while (mona.health > 0 && opponent.health > 0 && !feld) {
             cout << mona.name << " Health: " << mona.health << endl;
@@ -275,12 +275,11 @@ struct party{
                     cout << opponent.name << " fainted!" << endl;
                     break;
                 }
+            }
         }
         
         
-        return 0;
     }   
-}
 };
 
 Mon mon0 = {"Larose",0, 5, 5, 5, "", "Normal", "Fae", "Youre adding descriptions to them?", "Sarcasm", "Lightsaber", "Bad grade", "Tangent", 5, 5, 999, 0};
@@ -315,7 +314,7 @@ int gameplay(party p){
         cin >> choice;
         if (choice == choiceMenu::fight_barry) {
             cout << "You chose to fight Barry!" << endl;
-            //battle function here
+            p.battle_brarry(mon0, p);
         } else if (choice == choiceMenu::fight_wild_mon) {
             
             //random choice between all mons
@@ -353,7 +352,7 @@ int gameplay(party p){
             cout << "You chose to heal your mon!" << endl;
             PlaySound("111-pokemon-recovery.wav", NULL, SND_ASYNC);
             p.mona.health + 10;
-        } else if (choice == choiceMenu::exit) {
+        } else if (choice == choiceMenu::exit_game) {
             cout << "Exiting game. Goodbye!" << endl;
             running = false;
         } else {
