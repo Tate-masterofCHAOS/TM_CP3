@@ -292,6 +292,14 @@ Mon mon5 = {"Mr President", 0, 5,5, 5, "The presidential mon", "Political", "Spi
 Mon mon6 = {"Chester", 0,5, 5, 5, "The strongest climbing mon", "Climber", "Swole", "The only living mon left, it spends eternity climbing random ledges", "climb", "scuttle", "jump", "hook", 5, 5, 5, 5};
 Mon mon7 = {"Togore", 0, 5,5, 5, "The golfer mon", "Golfer", "Stupoid", "Plays golf all day everyday which is stupid, golf is stupid", "hole in one", "birdie", "hole in three", "hole in two", 5, 5, 5, 5};
 
+enum choiceMenu{
+
+    fight_barry = 1,
+    fight_wild_mon,
+    mon_stats,
+    heal_mon,
+    exit_game,
+};
     
 int gameplay(party p){
     bool running = true;
@@ -303,12 +311,12 @@ int gameplay(party p){
         cout << "3. Check your mon's stats" << endl;
         cout << "4. Heal your mon" << endl;
         cout << "5. Exit game" << endl;
-        string choice;
+        int choice;
         cin >> choice;
-        if (choice == "1") {
+        if (choice == choiceMenu::fight_barry) {
             cout << "You chose to fight Barry!" << endl;
             //battle function here
-        } else if (choice == "2") {
+        } else if (choice == choiceMenu::fight_wild_mon) {
             
             //random choice between all mons
             int mon_choice = rand() % 7; //randomly chooses between mon0 and mon7
@@ -332,7 +340,7 @@ int gameplay(party p){
             }
             cout << "You chose to find a wild mon!" << endl;
             p.battle_mon(opponent, p);
-        } else if (choice == "3") {
+        } else if (choice == choiceMenu::mon_stats) {
             cout << "You chose to check your mon's stats!" << endl;
             cout << p.mona.name << " the " << p.mona.title << endl;
             cout << "Type: " << p.mona.type << " / " << p.mona.dualType << endl;
@@ -341,11 +349,11 @@ int gameplay(party p){
             cout << "Agility: " << p.mona.agility << endl;
             cout << "Health: " << p.mona.health << endl;
             cout << "Attacks: " << p.mona.attack1 << ", " << p.mona.attack2 << ", " << p.mona.attack3 << ", " << p.mona.attack4 << endl;
-        } else if (choice == "4") {
+        } else if (choice == choiceMenu::heal_mon) {
             cout << "You chose to heal your mon!" << endl;
             PlaySound("111-pokemon-recovery.wav", NULL, SND_ASYNC);
             p.mona.health + 10;
-        } else if (choice == "5") {
+        } else if (choice == choiceMenu::exit) {
             cout << "Exiting game. Goodbye!" << endl;
             running = false;
         } else {
