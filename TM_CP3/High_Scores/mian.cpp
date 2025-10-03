@@ -1,6 +1,7 @@
 //TM CP3 High scores project
 
 #include <iostream>
+#include <filesystem>
 #include <limits>
 #include <fstream>
 #include <iomanip>
@@ -15,7 +16,7 @@ struct Score{
     string date;
 };
 
-
+namespace fs = std::filesystem;
 
 int Show_High_Scores(){
     ifstream ifile;
@@ -61,7 +62,9 @@ int main(){
     cin >> choice;
     if (choice == "1"){
         ofstream ofile("scores.csv", ios::app);
-        ofile.open("scores.csv");
+        cout << "Current working directory: " << fs::current_path() << endl;
+        cout << "Attempting to open: " << fs::absolute("scores.csv") << endl;
+
         if(ofile.is_open()){
             string name;
             int score;
@@ -72,10 +75,10 @@ int main(){
             cin >> score;
             cout << "Enter the date in yy-mm-dd format with the dashes: ";
             cin >> date;
-            ofile << "Name,Score,Date" << endl;
             ofile << name << "," << score << "," << date << endl;
             ofile.close();
             cout << "Score added!" << endl;
+
         }
         else{
             cout << "Error opening file" << endl;
