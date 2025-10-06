@@ -79,27 +79,27 @@ How do you extract specific information from a string in programming?
 
     cout << "first: " << first << endl << "Second: " <<  second;
 When a title contains a space, which function should you use to read it properly?
-
+    scanf
 Why might extra zeros be added to a string when converting a value without control?
-
+    It adds extra zeros for spaces that are saved
 How does controlling the string conversion process benefit your program?
-
+    It lets us control how our stuff gets saved in the string
 Give an example scenario where parsing a string would be necessary in a program.
-
+    When we want something specific
 When writing to a binary file, what does the first parameter (reinterpret_cast<char*>(&numbers)) represent?
-
+    Its what converts it from binary to the correct data type
 Why does the binary file only take 12 bytes while the array of integers might be larger?
-
+    It doesnt take any information of the data type and stuff
 What is the main difference between sequential search and binary search?
-
+    Binary expects it to be ordered but if it is ordered its better 
 In which type of data structure is binary search most efficient?
-
+    Ordered list
 What is a key requirement for binary search to work correctly on a list?
-
+    Must be ordered                 
 How does sequential search find an item in a list?
-
+    Checks everything Sequentially
 Why is binary search generally faster than sequential search for large, sorted lists?
-
+    Removes half of list each time
 */
     
 
