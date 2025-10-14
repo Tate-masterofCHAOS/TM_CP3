@@ -55,5 +55,10 @@
         "sstream": "cpp",
         "codecvt": "cpp",
         "ratio": "cpp"
-    }
+    },
+    "python.testing.pytestArgs": [
+        "Notes"
+    ],
+    "python.testing.unittestEnabled": false,
+    "python.testing.pytestEnabled": true
 }
