@@ -55,9 +55,9 @@ How are class diagrams used to show a parent/child relationship?
 How do you overload operators in a class?
     __eg__() and other symbols
 What are test cases?
-    
+    A test case is a function that checks your code to make it sure it is meeting certain conditions
 Why do we use test cases?
     make sure we dont break code weve already made
 How do we create test cases?
-
+    Create a file that is test_normal file name and inside we import our classes from our main file and set up the name of the test case the same way you set up the name of the file and use assert
 '''
