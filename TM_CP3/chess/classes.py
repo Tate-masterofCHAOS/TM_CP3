@@ -23,9 +23,9 @@ class Pawn(ChessPiece):
 
     def getSymbol(self):
         if self.color == "White":
-            return "♙"
-        elif self.color == "Black":
             return "♟"
+        elif self.color == "Black":
+            return "♙"
         
 class Knight(ChessPiece):
     color: str
@@ -53,15 +53,46 @@ class Bishop(ChessPiece):
         elif self.color == "Black":
             return "♗"
         
+class Rook(ChessPiece):
+    color: str
+    position: str
+    def __init__(self, color, position):
+        super().__init__(color, position)
 
-def main():
-    pawn = Pawn("Black", "E3")
-    print(pawn.getSymbol())
-    pawn2 = Pawn("White", "E3")
-    print(pawn.getSymbol())
-    knight = Knight("Black", "E3")
-    print(knight.getSymbol())
-    knight2 = Knight("White", "E3")
-    print(knight.getSymbol())
 
-main()
+    def getSymbol(self):
+        if self.color == "White":
+            return "♜"
+        elif self.color == "Black":
+            return "♖"
+        
+class Queen(ChessPiece):
+    color: str
+    position: str
+    def __init__(self, color, position):
+        super().__init__(color, position)
+
+
+    def getSymbol(self):
+        if self.color == "White":
+            return "♛"
+        elif self.color == "Black":
+            return "♕"
+        
+class King(ChessPiece):
+    color: str
+    position: str
+    def __init__(self, color, position):
+        super().__init__(color, position)
+
+
+    def getSymbol(self):
+        if self.color == "White":
+            return "♚"
+        elif self.color == "Black":
+            return "♔"
+        
+
+class ChessGame():
+    pass
+
